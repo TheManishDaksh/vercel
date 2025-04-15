@@ -1,0 +1,31 @@
+{
+  "name": "vercel",
+  "version": "1.0.0",
+  "description": "A vercel like deployment application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheManishDaksh/vercel.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/TheManishDaksh/vercel/issues"
+  },
+  "homepage": "https://github.com/TheManishDaksh/vercel#readme",
+  "dependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
+    "aws-sdk": "^2.1692.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "redis": "^4.7.0",
+    "simple-git": "^3.27.0",
+    "typescript": "^5.8.3"
+  }
+}
