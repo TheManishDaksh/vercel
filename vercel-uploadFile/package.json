@@ -1,5 +1,5 @@
 {
-  "name": "vercel",
+  "name": "vercel-uploadFile",
   "version": "1.0.0",
   "description": "A vercel like deployment application",
   "main": "index.js",

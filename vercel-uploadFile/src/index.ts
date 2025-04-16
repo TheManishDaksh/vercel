@@ -5,7 +5,10 @@ import simpleGit from "simple-git";
 import path from "path";
 import { getAllFiles } from "./file";
 import { uploadfile } from "./cloudFlare";
+import { createClient } from "redis";
 
+const publisher = createClient()
+publisher.connect()
 const app = express()
 
 app.use(express.json());
@@ -18,8 +21,10 @@ app.post("/deploy", async(req,res)=>{
     await simpleGit().clone(repoUrl, path.join(__dirname, `output/${id}`)) ;
     const allfiles = getAllFiles(path.join(__dirname, `output/${id}`))
     allfiles.forEach(file => {
-        uploadfile(file, `output.${id}`);  
+        uploadfile(file.slice(__dirname.length+1),file);  
     })
+
+    publisher.lPush("upload-queue", id)
     res.json({
         id : id
     })
