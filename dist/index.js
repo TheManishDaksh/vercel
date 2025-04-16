@@ -16,15 +16,23 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const utils_1 = __importDefault(require("./utils"));
 const simple_git_1 = __importDefault(require("simple-git"));
+const path_1 = __importDefault(require("path"));
+const file_1 = require("./file");
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
 app.post("/deploy", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const repoUrl = req.body.repoUrl;
     const id = (0, utils_1.default)();
-    yield (0, simple_git_1.default)().clone(repoUrl, `output/${id}`);
+    yield (0, simple_git_1.default)().clone(repoUrl, path_1.default.join(__dirname, `output/${id}`));
+    const allfiles = (0, file_1.getAllFiles)(path_1.default.join(__dirname, `output/${id}`));
+    allfiles.map(file => {
+        console.log(file);
+    });
     res.json({
         id: id
     });
 }));
-app.listen(3000);
+app.listen(3000, () => {
+    console.log(`Server is running on PORT 3000`);
+});

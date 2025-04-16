@@ -24,6 +24,7 @@
     "aws-sdk": "^2.1692.0",
     "cors": "^2.8.5",
     "express": "^5.1.0",
+    "fs": "^0.0.1-security",
     "redis": "^4.7.0",
     "simple-git": "^3.27.0",
     "typescript": "^5.8.3"
